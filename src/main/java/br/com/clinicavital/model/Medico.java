@@ -29,7 +29,7 @@ public class Medico {
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "medico_tem_especialidades",
-				joinColumns = @JoinColumn(name = "id_medido" , referencedColumnName = "id"),
+				joinColumns = @JoinColumn(name = "id_medico" , referencedColumnName = "id"),
 				inverseJoinColumns = @JoinColumn(name = "id_especialidade" , referencedColumnName = "id"))
 	private Set<EspecialidadesMedico> especialidades;
 

@@ -1,15 +1,20 @@
 package br.com.clinicavital.model;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Nutricao {
+public class Nutricionista {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +26,12 @@ public class Nutricao {
 	@OneToOne(cascade = CascadeType.ALL)
 	@Column
 	private Usuario usuario;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "nutricionista_tem_especialidades",
+				joinColumns = @JoinColumn(name = "id_nutricionista" , referencedColumnName = "id"),
+				inverseJoinColumns = @JoinColumn(name = "id_especialidade" , referencedColumnName = "id"))
+	private Set<EspecialidadesNutricionista> especialidades;
 
 	public Long getId() {
 		return id;
