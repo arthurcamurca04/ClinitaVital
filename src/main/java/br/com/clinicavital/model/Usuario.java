@@ -14,15 +14,18 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
+	@Column(nullable = false)
 	@NotBlank(message = "Insira seu nome")
 	private String nome;
-	@Column
+	
+	@Column(nullable = false)
 	@NotBlank(message = "Insira seu e-mail")
 	private String email;
-	@Column
+	
+	@Column(nullable = false)
 	@NotBlank(message = "Insira sua senha")
 	private String senha;
+	
 	@Column
 	private boolean ativo;
 	
@@ -55,7 +58,5 @@ public class Usuario {
 	}
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
-	}
-	
-	
+	}	
 }
