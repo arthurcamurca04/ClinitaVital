@@ -8,9 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "especialidades_medico")
-public class EspecialidadesMedico {
-
+@Table(name = "especialidades_fisioterapeuta")
+public class EspecialidadesFisioterapeuta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,6 +27,4 @@ public class EspecialidadesMedico {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
-	
 }
