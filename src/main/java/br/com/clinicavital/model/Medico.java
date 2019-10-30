@@ -24,7 +24,7 @@ public class Medico {
 	private String crm;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@Column(name = "id_usuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
 	@ManyToMany(cascade = CascadeType.ALL)

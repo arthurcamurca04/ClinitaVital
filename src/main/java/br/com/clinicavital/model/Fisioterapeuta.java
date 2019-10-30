@@ -24,7 +24,7 @@ public class Fisioterapeuta {
 	private String crefito;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@Column
+	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
 	@ManyToMany(cascade = CascadeType.ALL)

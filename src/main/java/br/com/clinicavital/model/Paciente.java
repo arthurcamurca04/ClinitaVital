@@ -1,11 +1,19 @@
 package br.com.clinicavital.model;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
@@ -20,15 +28,18 @@ public class Paciente {
 	private String cpf;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@Column(name = "id_usuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@Column(name = "id_endereco")
+	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
 	@Column
 	@NotBlank(message = "Insira seu telefone")
 	private String telefone;
+	
+	@OneToMany(mappedBy = "paciente")
+	private List<Agendamento> agendamentos;
 	
 	
 	public Long getId() {
