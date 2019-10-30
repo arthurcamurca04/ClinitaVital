@@ -1,19 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 	</head>
+	
 	<body>
-	<form>
-	<label for="inputnome">Nome completo</label>
-	<input type="text" placeholder="" name="inputnome">
-	<label for="inputcpf">CPF</label>
-	<input type="text" placeholder="usuario@exemplo.com" name="inputcpf">
-	<label for="inputrua">Rua</label>
-	<input type="text" placeholder="usuario@exemplo.com" name="inputrua">
-	<label for="inputbairro">Bairro</label>
-	<input type="text" placeholder="usuario@exemplo.com" name="inputbairro">
+		<h4>Inserir dados cadastrais</h4>
+	<form th:action="@{/paciente/cadastrar}" th:object="${paciente}" method="POST">
+	
+		<label for="inputnome">Nome completo</label>
+		<input type="text" th:field="*{usuario.nome}" placeholder="Ex.: Bruno da Silva" 
+		name="inputnome"><br>
+		
+		<label for="inputnome">E-mail</label>
+		<input type="text" th:field="*{usuario.email}" placeholder="Ex.: Bruno da Silva" 
+		name="inputnome"><br>
+		
+		<label for="inputnome">Senha</label>
+		<input type="password" th:field="*{usuario.senha}" placeholder="Ex.: Bruno da Silva" 
+		name="inputnome"><br>
+		
+		<label for="inputcpf">CPF</label>
+		<input type="text" th:field="*{cpf}" placeholder="CPF" name="inputcpf"><br>
+		
+		<label for="inputrua">Rua</label>
+		<input type="text" th:field="*{endereco.rua}" placeholder="Rua..." name="inputrua"><br>
+		
+		<label for="inputbairro">Bairro</label>	
+		<input type="text" th:field="*{endereco.bairro}" placeholder="Bairro..." 
+		name="inputbairro"><br>
+		
+		<label for="inputbairro">Cidade</label>	
+		<input type="text" th:field="*{endereco.cidade}" placeholder="Cidade..." 
+		name="inputbairro"><br>
+		
+		<label for="inputbairro">Estado</label>	
+		<input type="text" th:field="*{endereco.estado}" placeholder="Estado..." 
+		name="inputbairro"><br>
+		
+		<label for="inputbairro">CEP</label>	
+		<input type="text" th:field="*{endereco.cep}" placeholder="CEP" name="inputbairro">
+		
+		<label for="inputbairro">Telefone</label>	
+		<input type="text" th:field="*{telefone}" placeholder="Ex.: (83) 99189-7479" name="inputbairro">
+		
+		<button type="button">Voltar</button>
+		<button type="submit">Cadastrar</button>
 	</form>
 	
 	</body>
