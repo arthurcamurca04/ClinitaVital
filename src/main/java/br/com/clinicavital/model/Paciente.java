@@ -18,18 +18,18 @@ public class Paciente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column
+	@Column(unique = true, nullable = false)
 	@NotBlank(message = "Insira seu CPF")
 	private String cpf;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
+	private Usuario usuario;							  
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
-	@Column
+	@Column(nullable = false)
 	@NotBlank(message = "Insira seu telefone")
 	private String telefone;
 	

@@ -1,5 +1,7 @@
 package br.com.clinicavital;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,14 +16,17 @@ class ClinicaVitalApplicationTests {
 
 	@Autowired
 	private PacienteReporitory rep;
+	private int qtdInicial;
+	private int qtdAtual;
 	
-	@Test
+	//@Test
 	void contextLoads() {
 		
 	}
 	
 	@Test
 	public void inserirPaciente() {
+		qtdInicial = rep.findAll().size();
 		Usuario user = new Usuario();
 		Paciente paciente = new Paciente();
 		Endereco end = new Endereco();
@@ -43,6 +48,8 @@ class ClinicaVitalApplicationTests {
 		paciente.setEndereco(end);
 		
 		rep.save(paciente);
+		qtdAtual = rep.findAll().size();
+		assertEquals(qtdInicial + 1, qtdAtual);
 	}
 	
 	//@Test
@@ -55,7 +62,10 @@ class ClinicaVitalApplicationTests {
 	
 	//@Test
 	public void excluir() {
-		Paciente paciente = rep.findById(3L).get();
+		qtdInicial = rep.findAll().size();
+		Paciente paciente = rep.findById(8L).get();
 		rep.delete(paciente);
+		qtdAtual = rep.findAll().size();
+		assertEquals(qtdInicial - 1, qtdAtual);
 	}	
 }

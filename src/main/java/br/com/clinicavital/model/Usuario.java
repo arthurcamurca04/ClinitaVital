@@ -18,7 +18,7 @@ public class Usuario {
 	@NotBlank(message = "Insira seu nome")
 	private String nome;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	@NotBlank(message = "Insira seu e-mail")
 	private String email;
 	
