@@ -108,11 +108,12 @@ create table nutricionista_tem_especialidades(
 );
 
 create table perfil(
-	id bigint not null primary key,
+	id bigint not null primary key auto_increment,
 	descricao varchar(20) not null unique
 );
 
-insert into perfil(descricao) values('ADMIN'),('MEDICO'),('FISIOTERAPEUTA'),('NUTRICIONISTA'),('PACIENTE');
+insert into perfil(descricao) values
+('ADMIN'),('MEDICO'),('FISIOTERAPEUTA'),('NUTRICIONISTA'),('PACIENTE');
 create table usuario_tem_perfis(
 	id_perfil bigint not null,
     id_usuario bigint not null,
@@ -120,7 +121,6 @@ create table usuario_tem_perfis(
     foreign key (id_perfil) references perfil(id),
     foreign key (id_usuario) references usuario(id)
 );
-
 use dbclinica;
 select * from usuario;
 select * from endereco;
