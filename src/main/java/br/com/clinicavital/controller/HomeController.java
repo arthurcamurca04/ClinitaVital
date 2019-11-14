@@ -23,4 +23,18 @@ public class HomeController {
 	public String abrirPortal() {
 		return "portal";
 	}
+	@GetMapping("/acessonegado")
+	public String acessonegado() {
+		return "acesso-negado";
+	}
+	@GetMapping("/pagina-de-erro")
+	public String paginaDeErro() {
+		return "pagina-de-erro";
+	}
+	@GetMapping("/Teste")
+	public String teste() {
+		return "teste";
+	}
+	
+	
 }
