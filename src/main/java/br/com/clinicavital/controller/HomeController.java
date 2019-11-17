@@ -10,7 +10,7 @@ import br.com.clinicavital.model.Paciente;
 
 public class HomeController {
 	
-	@GetMapping("/")
+	@GetMapping({"/", "/home"})
 	public String home() {
 		return "login";
 	}
@@ -22,8 +22,14 @@ public class HomeController {
 
 	@GetMapping("/portal")
 	public String abrirPortal() {
-		return "portal";
+		return "admin/portal-admin";
 	}
+	
+	@GetMapping("/liberar")
+	public String liberarAcesso() {
+		return "admin/liberar-acesso";
+	}
+	
 	@GetMapping("/acessonegado")
 	public String acessonegado() {
 		return "acesso-negado";

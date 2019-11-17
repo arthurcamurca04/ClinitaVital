@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymelead=f.com">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.com"
+		xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
@@ -17,14 +18,14 @@
 	</header>
 
 	<div class="container mt-4" style="background-color: #f9f9f9;">
-		<h3>Login</h3>
+		<h3 class="display-4 <text-center></text-center>">Login</h3>
 		<div class="row" style="margin: auto; justify-content: center;">
 			<div class="col-6">
-				<form class="px-4 py-3">
+				<form class="px-4 py-3" th:action="@{/}" method="post">
 					<div class="form-group">
 						<label for="exampleDropdownFormEmail1">Endereço de email</label> 
 						<input type="email" class="form-control" id="exampleDropdownFormEmail1"
-							placeholder="exemplo@exemplo.com" required>
+							placeholder="exemplo@exemplo.com" autofocus="autofocus" required>
 					</div>
 					<div class="form-group">
 						<label for="exampleDropdownFormPassword1">Senha</label> 
@@ -35,13 +36,13 @@
 					<div class="form-group">
 						<label for="exampleDropdownFormPassword1">Perfil</label> 
 						<select class="form-group custom-select">
+							<option>Administrador</option>
 							<option>Médico</option>
+							<option>Fisioterapeuta</option>
+							<option>Nutricionista</option>
 							<option>Paciente</option>
 						</select>
-					</div>
-					
-										
-					
+					</div>				
 					
 					<div class="form-group">
 					
