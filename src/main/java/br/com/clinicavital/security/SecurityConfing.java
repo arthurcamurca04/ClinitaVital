@@ -13,8 +13,8 @@ public class SecurityConfing extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			//acessos públicos
 		.antMatchers("/webjars/**").permitAll()
-		.antMatchers("/", "/home").permitAll()
-		
+		.antMatchers("/**", "/home").permitAll()
+		.antMatchers("/nutricionista/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 			.formLogin()

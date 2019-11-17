@@ -22,7 +22,7 @@ public class NutricionistaController {
 	public ModelAndView cadastrarNutricionista(Nutricionista nutricionista) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject(repository.save(nutricionista));
-		mv.setViewName("/cadastrar-nutricionista");
+		mv.setViewName("nutricionista/cadastrar-nutricionista");
 		return mv;
 	}
 }
