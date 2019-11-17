@@ -3,6 +3,7 @@ package br.com.clinicavital.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import br.com.clinicavital.model.Nutricionista;
 import br.com.clinicavital.model.Paciente;
 
 @Controller
@@ -30,6 +31,10 @@ public class HomeController {
 	@GetMapping("/pagina-de-erro")
 	public String paginaDeErro() {
 		return "pagina-de-erro";
+	}
+	@GetMapping("/cadastrar-nutricionista")
+	public String cadastrarNutricionista(Nutricionista nutricionista) {
+		return "nutricionista/cadastrar-nutricionista";
 	}
 	@GetMapping("/Teste")
 	public String teste() {

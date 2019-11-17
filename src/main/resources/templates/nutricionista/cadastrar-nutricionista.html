@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	
+	<body>
+		<h4>Inserir dados cadastrais do nutricionista</h4>
+	<form th:action="@{nutricionista/cadastrar-nutricionista}" th:object="${nutricionista}" method="POST">
+	
+		<label for="inputnome">Nome completo</label>
+		<input type="text" th:field="*{usuario.nome}" placeholder="Ex.: Bruno da Silva" 
+		name="inputnome"><br>
+		
+		<label for="inputemail">E-mail</label>
+		<input type="text" th:field="*{usuario.email}" placeholder="Ex.: paciente@email.com" 
+		name="inputnome"><br>
+		
+		<label for="inputsenha">Senha</label>
+		<input type="password" th:field="*{usuario.senha}" placeholder="***********" 
+		name="inputnome"><br>
+		
+		<label for="inputcrefito">Crn</label>
+		<input type="text" th:field="*{crn}" placeholder="Crn" name="inputCrn"><br>
+		
+		<button type="button">Cancelar</button>
+		<button type="submit">Confimar</button>
+	</form>
+	</body>
+</html>
