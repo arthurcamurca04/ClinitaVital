@@ -2,30 +2,83 @@
 
 <html>
 
-<head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-</head>
-
-<body>
-	<h3>Liberar acesso</h3>
-	<label for="inputemail">E-mail</label>
-		<input type="text" placeholder="***********" 
-		name="inputemail"><br>
-	<label for="inputsenha">Senha</label>
-		<input type="password"  placeholder="***********" 
-		name="inputsenha"><br>
-	<label for="inputperfis">Perfis</label><br>
-		<input type="checkbox"  placeholder="***********" 
-		name="inputsenha">Médico<br>
-		<input type="checkbox"  placeholder="***********" 
-		name="inputsenha">Fisioterapeuta<br>
-		<input type="checkbox"  placeholder="***********" 
-		name="inputsenha">Nutricionista<br>
-		<input type="checkbox"  placeholder="***********" 
-		name="inputsenha">Administrador<br>
+	<head>
+		<meta charset="UTF-8">
+		<title>Liberar acesso</title>
+		<link rel="stylesheet"
+		th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 		
+		<style type="text/css">
+			#liberar-acesso{
+				margin: auto !important;
+				height: 25% !important;
+				width: 50% !important;
+			}
+			
+			#botao{
+				border-radius: 25px !important;
+			}
+		</style>
+	</head>
 	
-</body>
+	<body>
+	
+		<header>
+			
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+					<a class="navbar-brand" href="#">Clínica Médica Vital</a>
+					<span class="text-light">Administrador</span>
+				         			
+					<form class="form-inline my-2 my-lg-0" style="margin-left: 55%;">
+	      				<input class="form-control mr-sm-2" type="text" aria-label="Pesquisar" readonly="readonly">
+	      				<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
+	   				 </form>
+				</nav>
+		</header>
+		
+		
+		<h1 class="display mt-5 mb-5" style="text-align: center">Liberar acesso</h1>
+		
+		<div class="container">
+			<div id="liberar-acesso">
+				<div class="row">
+					<div class="col-12">
+						<form class="form-group" action="">
+							<label for="inputemail">E-mail</label>
+								<input class="form-control" type="text" placeholder="email@servidor.com" 
+								name="inputemail">
+								
+							<label for="inputsenha">Senha</label>
+								<input class="form-control" type="password"  placeholder="***********" 
+								name="inputsenha">
+								
+							<label for="perfis">Perfil</label>
+							
+							<select multiple="multiple" class="form-control mb-3">
+								<option>Administrador</option>
+								<option>Médico</option>
+								<option>Fisioterapeuta</option>
+								<option>Nutricionista</option>
+								<option>Paciente</option>
+							</select>
+							
+							<div class="row">
+								<div class="col-6">
+									<button id="botao" type="button" class="btn btn-primary btn-lg btn-block">Voltar</button>
+								</div>
+								
+								<div class="col-6">
+									<button id="botao" type="submit" class="btn btn-success btn-lg btn-block">Salvar</button>
+								</div>								
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>	
+			
+		<script th:src="@{/webjars/jquery/jquery.min.js/}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	</body>
 
 </html>
