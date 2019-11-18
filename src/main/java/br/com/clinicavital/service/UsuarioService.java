@@ -23,13 +23,12 @@ public class UsuarioService implements UserDetailsService {
 	
 	@Transactional( readOnly = true )
 	public Usuario obterPorEmail(String email) {
-		return userRepository.getPorEmail(email);
+		return userRepository.findByEmail(email);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
 		Usuario usuario = obterPorEmail(username);
 		return new User(
 				usuario.getEmail(),

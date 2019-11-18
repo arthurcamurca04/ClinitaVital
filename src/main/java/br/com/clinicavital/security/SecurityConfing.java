@@ -21,12 +21,12 @@ public class SecurityConfing extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			//acessos públicos
 		.antMatchers("/webjars/**").permitAll()
-		.antMatchers("/", "/home").permitAll()
+		.antMatchers("/").permitAll()
 		.antMatchers("/nutricionista/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 			.formLogin()
-			.loginPage("/login")
+			.loginPage("/")
 			.defaultSuccessUrl("/", true)
 			.failureUrl("/pagina-de-erro")
 			.permitAll()
@@ -37,8 +37,6 @@ public class SecurityConfing extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// TODO Auto-generated method stub
-		//super.configure(auth);
 		auth.userDetailsService(service).passwordEncoder(new BCryptPasswordEncoder());
 	}
 	

@@ -9,5 +9,5 @@ import br.com.clinicavital.model.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
 	@Query("select u from Usuario u where u.email like :email")
-	Usuario getPorEmail(@Param("email") String email);
+	Usuario findByEmail(@Param("email") String email);
 }

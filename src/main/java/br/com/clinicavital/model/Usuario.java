@@ -7,13 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "usuario", indexes = {@Index(name = "idx_usuario_email", columnList = "email")})
 public class Usuario {
 	
 	@Id
@@ -41,7 +43,7 @@ public class Usuario {
 	)
 	private List<Perfil> perfis;
 	
-	@Column
+	@Column(name = "ativo", nullable = false, columnDefinition = "TINYINT(1)")
 	private boolean ativo;
 	
 	public Long getId() {
