@@ -3,24 +3,25 @@ use dbclinica;
 
 create table usuario(
 	id bigint primary key auto_increment,
-    nome varchar(50) not null,
-    email varchar(50) not null,
-    senha varchar(50) not null,
+    nome varchar(200) not null,
+    email varchar(200) not null,
+    senha varchar(200) not null,
     ativo bool default true
 );
 
 
+
 create table endereco(
 	id bigint primary key auto_increment,
-    cep varchar(8) not null,
-    rua varchar(50) not null,
-    bairro varchar(50) not null,
-    cidade varchar(50) not null,
+    cep varchar(10) not null,
+    rua varchar(200) not null,
+    bairro varchar(200) not null,
+    cidade varchar(200) not null,
     estado varchar(2) not null
 );
 create table paciente(
 	id bigint primary key auto_increment,
-    cpf char(11) unique not null,
+    cpf char(14) unique not null,
     id_usuario bigint not null,
     id_endereco bigint not null,
     telefone varchar(20) not null,
@@ -121,17 +122,25 @@ create table usuario_tem_perfis(
     foreign key (id_perfil) references perfil(id),
     foreign key (id_usuario) references usuario(id)
 );
-use dbclinica;
-select * from usuario;
-select * from endereco;
-select * from paciente;
-select * from agendamento;
-select * from medico;
-select * from fisioterpeuta;
-select * from nutricionista;
-select * from especialidades_medico;
-select * from especialidades_fisioterapeuta;
-select * from especialidades_nutricionista;
-select * from medico_tem_especialidades;
-select * from fisioterapeuta_tem_especialidades;
-select * from nutricionista_tem_especialidades;
+
+insert into usuario(nome,email,senha) values 
+("admin","admin@vital.com","$2a$10$HlkrvQCRW0IJQbn1nDaCMub5MRTD3Zpl/eeS6H5dWjr9yDDxxYYj.");
+
+insert into usuario_tem_perfis values(1,1);
+
+#
+#use dbclinica;
+#select * from usuario;
+#select * from endereco;
+#select * from paciente;
+#select * from agendamento;
+#select * from medico;
+#select * from fisioterpeuta;
+#select * from nutricionista;
+#select * from especialidades_medico;
+#select * from especialidades_fisioterapeuta;
+#select * from especialidades_nutricionista;
+#select * from medico_tem_especialidades;
+#select * from fisioterapeuta_tem_especialidades;
+#select * from nutricionista_tem_especialidades;
+#select * from perfil;
