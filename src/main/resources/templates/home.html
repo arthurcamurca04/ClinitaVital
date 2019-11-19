@@ -1,33 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<title>Portal</title>
-		<link rel="stylesheet"
-	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-	
-	<style type="text/css">
-		#menu{
-			margin-top: 10em !important;
-		}
-		
-		#botao{
-			border-radius: 25px !important;
-			margin-left: 50% !important;
-		}
-	</style>
-	
-	</head>
-	<body>
-	
-		<header>
-			
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-					<a class="navbar-brand" href="#">Clínica Médica Vital</a>
-				</nav>
-		</header>
-				
-			<div id="menu" class="container">
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+
+	<section class="layout-content" layout:fragment="corpo">
+		<main role="main">
+
+
+		<div id="menu" class="container">
 			
 			<h1 class="display mb-5" style="text-align: center;">Bem-vindo</h1>
 			
@@ -39,10 +22,10 @@
 					
 				</div>
 			</div>
-			
-		
-	</body>
-	
-	<script th:src="@{/webjars/jquery/jquery.min.js/}"></script>
-	<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+		</main>
+	</section>
+	<script th:src="~{}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript"></script>
+</body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	th:with="version=${#strings.randomAlphanumeric(3)}">
+<head>
+<title>Clínica Vital</title>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+
+</head>
+<body>
+	<header th:replace="fragmentos/cabecalho :: cabecalho">
+		<div>header</div>
+	</header>
+
+	<div class="layout-main">	
+		<section layout:fragment="corpo">		
+			<div>conteudo principal das páginas</div>
+		</section>		
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
+	<!-- 	MEUS JS -->
+	<script th:replace=":: js"></script>	
+	<script th:replace=":: inlinescript" th:inline="javascript"></script>
+
+	</body>
+</html>
