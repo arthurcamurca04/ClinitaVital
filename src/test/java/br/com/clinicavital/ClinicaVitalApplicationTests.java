@@ -1,23 +1,23 @@
 package br.com.clinicavital;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 //import br.com.clinicavital.model.Endereco;
-import br.com.clinicavital.model.Paciente;
+///import br.com.clinicavital.model.Paciente;
 //import br.com.clinicavital.model.Usuario;
-import br.com.clinicavital.repositry.PacienteReporitory;
+//import br.com.clinicavital.repositry.PacienteReporitory;
 
 @SpringBootTest
 class ClinicaVitalApplicationTests {
 
 	@Autowired
-	private PacienteReporitory rep;
-	private int qtdInicial;
-	private int qtdAtual;
+//	private PacienteReporitory rep;
+//	private int qtdInicial;
+//	private int qtdAtual;
 	
 	//@Test
 	void contextLoads() {
@@ -47,11 +47,11 @@ class ClinicaVitalApplicationTests {
 	 */
 	
 	//@Test
-	public void excluir() {
-		qtdInicial = rep.findAll().size();
-		Paciente paciente = rep.findById(8L).get();
-		rep.delete(paciente);
-		qtdAtual = rep.findAll().size();
-		assertEquals(qtdInicial - 1, qtdAtual);
-	}	
+	//public void excluir() {
+		//qtdInicial = rep.findAll().size();
+		//Paciente paciente = rep.findById(8L).get();
+		//rep.delete(paciente);
+		//qtdAtual = rep.findAll().size();
+		//assertEquals(qtdInicial - 1, qtdAtual);
+	//}	
 }

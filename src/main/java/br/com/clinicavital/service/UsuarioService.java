@@ -11,12 +11,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import br.com.clinicavital.model.Perfil;
 import br.com.clinicavital.model.Usuario;
 import br.com.clinicavital.repositry.UsuarioRepository;
 
 @Service
-public class UsuarioService implements UserDetailsService {
+public class UsuarioService implements UserDetailsService{
 	
 	@Autowired
 	private UsuarioRepository userRepository;
@@ -26,16 +27,9 @@ public class UsuarioService implements UserDetailsService {
 		return userRepository.findByEmail(email);
 	}
 
-	@Override
-	@Transactional(readOnly = true)
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Usuario usuario = obterPorEmail(username);
-		return new User(
-				usuario.getEmail(),
-				usuario.getSenha(),
-				AuthorityUtils.createAuthorityList(getAuthorities(usuario.getPerfis()))				
-		);
-		
+	@Transactional( readOnly = true )
+	public List<Usuario> listarUsers() {
+		return userRepository.findAll();
 	}
 	
 	private String[] getAuthorities(List<Perfil> perfis) {
@@ -44,5 +38,20 @@ public class UsuarioService implements UserDetailsService {
 			authorities[i] = perfis.get(i).getDesc();
 		}
 		return authorities;
+	}
+
+
+	@Override
+	@Transactional( readOnly = true )
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		Usuario u = obterPorEmail(email);
+		if(u==null) {
+			System.out.println("Não existe usuário");
+		}
+		return new User(
+				u.getEmail(),
+				u.getSenha(),
+				AuthorityUtils.createAuthorityList(getAuthorities(u.getPerfis()))
+				);
 	}
 }

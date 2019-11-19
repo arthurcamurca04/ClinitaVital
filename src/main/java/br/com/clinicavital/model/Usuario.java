@@ -7,13 +7,11 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "usuarios", indexes = {@Index(name = "idx_usuario_email", columnList = "email")})
-public class Usuario {	
+public class Usuario extends AbstractEntity{	
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	
 	@Column(name = "email", unique = true, nullable = false)
 	private String email;
@@ -38,6 +36,10 @@ public class Usuario {
 	
 	public Usuario() {
 		super();
+	}
+	
+	public Usuario (Long id) {
+		super.setId(id);
 	}
 
 	// adiciona perfis a lista
@@ -90,14 +92,6 @@ public class Usuario {
 
 	public void setCodigoVerificador(String codigoVerificador) {
 		this.codigoVerificador = codigoVerificador;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 }
