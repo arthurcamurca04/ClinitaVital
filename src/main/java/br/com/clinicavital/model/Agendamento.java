@@ -1,41 +1,39 @@
 package br.com.clinicavital.model;
 
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+
 @Entity
+@Table(name = "agendamentos") 
 public class Agendamento {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
-	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private LocalDateTime horario;
+	@ManyToOne
+	@JoinColumn(name="id_especialidade")
+	private Especialidade especialidade;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_paciente")
+	@JoinColumn(name="id_medico")
+	private Medico medico;
+	
+	@ManyToOne
+	@JoinColumn(name="id_paciente")
 	private Paciente paciente;
 	
-	@Column
-	@NotBlank(message = "Insira o profiissional")
-	private String profissional;
-	
-	@Column
-	private String identificador_profissional;
+	@ManyToOne
+	@JoinColumn(name="id_horario")
+	private Horario horario; 
 
+	@Column(name="data_consulta")
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate dataConsulta;
+	
 	public Long getId() {
 		return id;
 	}
@@ -43,13 +41,21 @@ public class Agendamento {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public LocalDateTime getHorario() {
-		return horario;
+	
+	public Especialidade getEspecialidade() {
+		return especialidade;
 	}
 
-	public void setHorario(LocalDateTime horario) {
-		this.horario = horario;
+	public void setEspecialidade(Especialidade especialidade) {
+		this.especialidade = especialidade;
+	}
+
+	public Medico getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
 	}
 
 	public Paciente getPaciente() {
@@ -60,21 +66,19 @@ public class Agendamento {
 		this.paciente = paciente;
 	}
 
-	public String getProfissional() {
-		return profissional;
+	public LocalDate getDataConsulta() {
+		return dataConsulta;
 	}
 
-	public void setProfissional(String profissional) {
-		this.profissional = profissional;
+	public void setDataConsulta(LocalDate dataConsulta) {
+		this.dataConsulta = dataConsulta;
 	}
 
-	public String getIdentificador_profissional() {
-		return identificador_profissional;
+	public Horario getHorario() {
+		return horario;
 	}
 
-	public void setIdentificador_profissional(String identificador_profissional) {
-		this.identificador_profissional = identificador_profissional;
+	public void setHorario(Horario horario) {
+		this.horario = horario;
 	}
-	
-	
 }

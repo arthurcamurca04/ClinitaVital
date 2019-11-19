@@ -13,6 +13,7 @@
 		
 		#botao{
 			border-radius: 25px !important;
+			margin-left: 50% !important;
 		}
 	</style>
 	
@@ -23,12 +24,6 @@
 			
 				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 					<a class="navbar-brand" href="#">Clínica Médica Vital</a>
-					<span class="text-light">Administrador</span>
-				         			
-					<form class="form-inline my-2 my-lg-0" style="margin-left: 55%;">
-	      				<input class="form-control mr-sm-2" type="text" aria-label="Pesquisar" readonly="readonly">
-	      				<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
-	   				 </form>
 				</nav>
 		</header>
 				
@@ -38,22 +33,10 @@
 			
 				<div class="row">
 					<div class="col-6">
-						<a id="botao" class="btn btn-primary btn-block btn-lg" href="#">Liberar acesso usuário</a>
+						<a id="botao" class="btn btn-primary btn-block btn-lg" 
+						th:href="@{/login}">Efetuar login</a>
 					</div>
 					
-					<div class="col-6">
-						<a id="botao" class="btn btn-primary btn-block btn-lg" href="#">Ver agendamentos</a>
-					</div>
-				</div>
-				
-				<div class="row mt-5">
-					<div class="col-6">
-						<a id="botao" class="btn btn-primary btn-block btn-lg" href="#">Ver histórico</a>
-					</div>
-					
-					<div class="col-6">
-						<a id="botao" class="btn btn-primary btn-block btn-lg" href="#">Listar usuários</a>
-					</div>
 				</div>
 			</div>
 			

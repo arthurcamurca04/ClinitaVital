@@ -1,53 +1,100 @@
 package br.com.clinicavital.model;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "medicos")
 public class Medico {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(name = "nome", unique = true, nullable = false)
+	private String nome;
 	
-	@Column(nullable = false)
-	private String crm;
+	@Column(name = "crm", unique = true, nullable = false)
+	private Integer crm;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@DateTimeFormat(iso = ISO.DATE)
+	@Column(name = "data_inscricao", nullable = false)
+	private LocalDate dtInscricao;
+	
+	// evita recursividade quando o json de resposta for criado para a datatables.
+	@JsonIgnore
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(
+			name = "medicos_tem_especialidades",
+			joinColumns = @JoinColumn(name = "id_medico", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "id_especialidade", referencedColumnName = "id")
+    )
+	private Set<Especialidade> especialidades;
+	
+	// evita recursividade quando o json de resposta for criado para a datatables.
+	@JsonIgnore
+	@OneToMany(mappedBy = "medico")
+	private List<Agendamento> agendamentos;
+	
+	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "medico_tem_especialidades",
-				joinColumns = @JoinColumn(name = "id_medico" , referencedColumnName = "id"),
-				inverseJoinColumns = @JoinColumn(name = "id_especialidade" , referencedColumnName = "id"))
-	private Set<EspecialidadesMedico> especialidades;
-
-	public Long getId() {
-		return id;
+	public Medico() {
+		super();
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public Medico(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public String getCrm() {
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Integer getCrm() {
 		return crm;
 	}
 
-	public void setCrm(String crm) {
+	public void setCrm(Integer crm) {
 		this.crm = crm;
 	}
+
+	public LocalDate getDtInscricao() {
+		return dtInscricao;
+	}
+
+	public void setDtInscricao(LocalDate dtInscricao) {
+		this.dtInscricao = dtInscricao;
+	}
+
+	public Set<Especialidade> getEspecialidades() {
+		return especialidades;
+	}
+
+	public void setEspecialidades(Set<Especialidade> especialidades) {
+		this.especialidades = especialidades;
+	}
+
+	public List<Agendamento> getAgendamentos() {
+		return agendamentos;
+	}
+
+	public void setAgendamentos(List<Agendamento> agendamentos) {
+		this.agendamentos = agendamentos;
+	}	
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -56,4 +103,14 @@ public class Medico {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
 }

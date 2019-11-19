@@ -1,6 +1,6 @@
 package br.com.clinicavital.model;
 
-import java.util.Set;
+import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,44 +9,64 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
+@Table(name = "fisioterapeutas")
 public class Fisioterapeuta {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(name = "nome", unique = true, nullable = false)
+	private String nome;
 	
-	@Column(nullable = false)
-	private String crefito;
+	@Column(name = "crefito", unique = true, nullable = false)
+	private Integer crefito;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@DateTimeFormat(iso = ISO.DATE)
+	@Column(name = "data_inscricao", nullable = false)
+	private LocalDate dtInscricao;
+	
+	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "fisioterapeuta_tem_especialidades",
-				joinColumns = @JoinColumn(name = "id_fisioterapeuta" , referencedColumnName = "id"),
-				inverseJoinColumns = @JoinColumn(name = "id_especialidade" , referencedColumnName = "id"))
-	private Set<EspecialidadesFisioterapeuta> especialidades;
-
-	public Long getId() {
-		return id;
+	public Fisioterapeuta() {
+		super();
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public Fisioterapeuta(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public String getCrefito() {
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Integer getCrefito() {
 		return crefito;
 	}
 
-	public void setCrefito(String crefito) {
+	public void setCrefito(Integer crefito) {
 		this.crefito = crefito;
+	}
+
+	public LocalDate getDtInscricao() {
+		return dtInscricao;
+	}
+
+	public void setDtInscricao(LocalDate dtInscricao) {
+		this.dtInscricao = dtInscricao;
 	}
 
 	public Usuario getUsuario() {
@@ -57,5 +77,11 @@ public class Fisioterapeuta {
 		this.usuario = usuario;
 	}
 
-	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}	
 }

@@ -1,73 +1,76 @@
 package br.com.clinicavital.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Paciente {
-
+@Table(name = "pacientes")
+public class Paciente{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(unique = true, nullable = false)
-	@NotBlank(message = "Insira seu CPF")
-	private String cpf;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;							  
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_endereco")
-	private Endereco endereco;
-	@Column(nullable = false)
-	@NotBlank(message = "Insira seu telefone")
-	private String telefone;
-	
+
+	@Column(name = "nome", unique = true, nullable = false)
+	private String nome;
+
+	@Column(name = "data_nascimento", nullable = false)
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate dtNascimento;
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "paciente")
 	private List<Agendamento> agendamentos;
 	
-	
-	public Long getId() {
-		return id;
+	@OneToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
+
+	public String getNome() {
+		return nome;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	public String getCpf() {
-		return cpf;
+
+	public LocalDate getDtNascimento() {
+		return dtNascimento;
 	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+
+	public void setDtNascimento(LocalDate dtNascimento) {
+		this.dtNascimento = dtNascimento;
 	}
+
+	public List<Agendamento> getAgendamentos() {
+		return agendamentos;
+	}
+
+	public void setAgendamentos(List<Agendamento> agendamentos) {
+		this.agendamentos = agendamentos;
+	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	public Endereco getEndereco() {
-		return endereco;
+
+	public Long getId() {
+		return id;
 	}
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-	public String getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	
+
 }

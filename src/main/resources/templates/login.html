@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.com"
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
 		xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
@@ -21,11 +21,11 @@
 		<h3 class="display-4 text-center">Login</h3>
 		<div class="row" style="margin: auto; justify-content: center;">
 			<div class="col-6">
-				<form class="px-4 py-3" th:action="@{/}" method="post">
+				<form class="px-4 py-3" th:action="@{/login}" method="post">
 					<div class="form-group">
 						<label for="exampleDropdownFormEmail1">Endereço de email</label> 
 						<input type="email" class="form-control" id="exampleDropdownFormEmail1"
-							placeholder="exemplo@exemplo.com" autofocus="autofocus" required>
+							placeholder="exemplo@exemplo.com" autofocus required>
 					</div>
 					<div class="form-group">
 						<label for="exampleDropdownFormPassword1">Senha</label> 

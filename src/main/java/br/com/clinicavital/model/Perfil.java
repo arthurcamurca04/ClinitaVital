@@ -1,27 +1,24 @@
 package br.com.clinicavital.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "perfis")
 public class Perfil {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name = "descricao", nullable = false, unique = true)
 	private String desc;
-
-	public Long getId() {
-		return id;
+	
+	public Perfil() {
+		super();
 	}
-
-	public void setId(Long id) {
-		this.id = id;
+	
+	public Perfil(Long id) {
+		setId(id);
 	}
 
 	public String getDesc() {
@@ -30,6 +27,14 @@ public class Perfil {
 
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

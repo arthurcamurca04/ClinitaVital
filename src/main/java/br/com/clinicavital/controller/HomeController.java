@@ -9,7 +9,13 @@ import br.com.clinicavital.model.Paciente;
 
 public class HomeController {
 	
+	
 	@GetMapping("/")
+	public String admin() {
+		return "home";
+	}
+	
+	@GetMapping("/login")
 	public String home() {
 		return "login";
 	}
