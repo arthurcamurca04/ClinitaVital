@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
 	layout:decorate="~{layout}">
 <head>
 <meta charset="UTF-8" />
@@ -9,19 +9,14 @@
 	<section class="layout-content" layout:fragment="corpo">
 		<main role="main">
 
-
-		<div id="menu" class="container">
-			
-			<h1 class="display mb-5" style="text-align: center;">Bem-vindo</h1>
-			
-				<div class="row">
-					<div class="col-6">
-						<a id="botao" class="btn btn-primary btn-block btn-lg" 
-						th:href="@{/login}">Efetuar login</a>
-					</div>
-					
-				</div>
+		<section class="jumbotron text-center mt-5">
+			<span><i style="color: green;" class="fas fa-clinic-medical fa-4x mb-4"></i></span>
+			<div class="container mt-5">
+				<h1 class="jumbotron-heading">Clínica Médica Vital</h1>
+				<p class="lead text-muted">Bem-vindo ao nosso sistema.  Cadastre-se e agende suas consultas
+					com os melhores médicos da região.</p>
 			</div>
+		</section>
 
 		</main>
 	</section>

@@ -43,8 +43,8 @@ public class UsuarioService implements UserDetailsService{
 
 	@Override
 	@Transactional( readOnly = true )
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Usuario u = obterPorEmail(email);
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Usuario u = obterPorEmail(username);
 		if(u==null) {
 			System.out.println("Não existe usuário");
 		}
