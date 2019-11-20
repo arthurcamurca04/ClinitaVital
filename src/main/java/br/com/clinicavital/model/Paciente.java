@@ -30,6 +30,10 @@ public class Paciente{
 	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
+	
+	@OneToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "id_endereco")
+	private Endereco endereco;
 
 	public String getNome() {
 		return nome;
@@ -69,6 +73,14 @@ public class Paciente{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	
 	

@@ -1,7 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `dbclinica` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `dbclinica`;
 
-
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: demo_security
@@ -219,7 +218,7 @@ DROP TABLE IF EXISTS `enderecos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE enderecos (
-  id bigint(20) NOT NULL,
+  id bigint(20) NOT NULL auto_increment,
   estado varchar(2) NOT NULL,
   cidade varchar(100) NOT NULL,
   bairro varchar(100) NOT NULL,
