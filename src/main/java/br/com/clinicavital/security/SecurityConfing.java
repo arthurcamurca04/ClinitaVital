@@ -23,6 +23,7 @@ public class SecurityConfing extends WebSecurityConfigurerAdapter{
 		.antMatchers("/webjars/**").permitAll()
 		.antMatchers("/").permitAll()
 		.antMatchers("/nutricionista/**").permitAll()
+		.antMatchers("/paciente/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 			.formLogin()

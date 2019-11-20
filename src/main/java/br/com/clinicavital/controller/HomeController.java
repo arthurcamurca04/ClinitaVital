@@ -25,6 +25,8 @@ public class HomeController {
 		return "paciente/cadastrar";
 	}
 
+	
+	
 	@GetMapping("/portal")
 	public String abrirPortal() {
 		return "admin/portal-admin";
