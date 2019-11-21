@@ -27,11 +27,11 @@ public class Paciente{
 	@OneToMany(mappedBy = "paciente")
 	private List<Agendamento> agendamentos;
 	
-	@OneToOne(cascade = CascadeType.REMOVE)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	
-	@OneToOne(cascade = CascadeType.REMOVE)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
 

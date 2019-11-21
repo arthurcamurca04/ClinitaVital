@@ -29,7 +29,7 @@ public class SecurityConfing extends WebSecurityConfigurerAdapter{
 			.formLogin()
 			.loginPage("/login")
 			.defaultSuccessUrl("/", true)
-			.failureUrl("/pagina-de-erro")
+			.failureUrl("/login-error")
 			.permitAll()
 		.and()
 			.logout()

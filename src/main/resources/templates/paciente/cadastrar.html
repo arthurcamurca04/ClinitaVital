@@ -11,40 +11,40 @@
 	<form th:action="@{/paciente/cadastrar}" th:object="${paciente}" method="POST">
 	
 		<label for="inputnome">Nome completo</label>
-		<input type="text" th:field="*{usuario.nome}" placeholder="Ex.: Bruno da Silva" 
-		name="inputnome"><br>
+		<input type="text" th:field="*{nome}" placeholder="Ex.: Bruno da Silva" 
+		name="inputnome" required autofocus="autofocus"><br>
 		
 		<label for="inputnome">E-mail</label>
 		<input type="text" th:field="*{usuario.email}" placeholder="Ex.: paciente@email.com" 
-		name="inputnome"><br>
+		name="inputnome" required="required"><br>
+		
+		<label for="inputdatanascimento">Data de Nascimento</label>
+		<input type="date" th:field="*{dtNascimento}" placeholder="Ex.: 01/01/2001" 
+		name="inputdatanascimento" required><br>
 		
 		<label for="inputnome">Senha</label>
 		<input type="password" th:field="*{usuario.senha}" placeholder="***********" 
-		name="inputnome"><br>
-		
-		<label for="inputcpf">CPF</label>
-		<input type="text" th:field="*{cpf}" placeholder="CPF" name="inputcpf"><br>
-		
+		name="inputnome" required><br>
+				
 		<label for="inputrua">Rua</label>
-		<input type="text" th:field="*{endereco.rua}" placeholder="Rua..." name="inputrua"><br>
+		<input type="text" th:field="*{endereco.rua}" placeholder="Rua..." name="inputrua" required><br>
 		
 		<label for="inputbairro">Bairro</label>	
 		<input type="text" th:field="*{endereco.bairro}" placeholder="Bairro..." 
-		name="inputbairro"><br>
+		name="inputbairro" required><br>
 		
 		<label for="inputbairro">Cidade</label>	
 		<input type="text" th:field="*{endereco.cidade}" placeholder="Cidade..." 
-		name="inputbairro"><br>
+		name="inputbairro" required><br>
 		
 		<label for="inputbairro">Estado</label>	
 		<input type="text" th:field="*{endereco.estado}" placeholder="Estado..." 
-		name="inputbairro"><br>
+		name="inputbairro" required><br>
 		
 		<label for="inputbairro">CEP</label>	
-		<input type="text" th:field="*{endereco.cep}" placeholder="CEP" name="inputbairro"><br>
+		<input type="text" th:field="*{endereco.cep}" placeholder="CEP" name="inputbairro" required><br>
 		
-		<label for="inputbairro">Telefone</label>	
-		<input type="text" th:field="*{telefone}" placeholder="Ex.: (83) 99189-7479" name="inputbairro"><br><br>
+		<input type="hidden" th:field="*{usuario.ativo}" value="1">
 		
 		<button type="button">Voltar</button>
 		<button type="submit">Cadastrar</button>

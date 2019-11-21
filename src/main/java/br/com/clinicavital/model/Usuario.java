@@ -28,7 +28,7 @@ public class Usuario extends AbstractEntity{
 	)
 	private List<Perfil> perfis;
 	
-	@Column(name = "ativo", nullable = false, columnDefinition = "TINYINT(1)")
+	@Column(name = "ativo", nullable = false, columnDefinition = "TINYINT(1)" )
 	private boolean ativo;
 	
 	@Column(name = "codigo_verificador", length = 6)

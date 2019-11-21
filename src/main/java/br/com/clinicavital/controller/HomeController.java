@@ -1,6 +1,7 @@
 package br.com.clinicavital.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import br.com.clinicavital.model.Nutricionista;
 import br.com.clinicavital.model.Paciente;
@@ -17,6 +18,15 @@ public class HomeController {
 	
 	@GetMapping("/login")
 	public String home() {
+		return "login";
+	}
+	
+	// login inválido
+	@GetMapping("/login-error")
+	public String loginError(ModelMap model) {
+		model.addAttribute("alerta", "erro");
+		model.addAttribute("titulo", "Credenciais Inválidas");
+		model.addAttribute("texto", "Login ou Senha incorretos. Tente novamente!");
 		return "login";
 	}
 		
