@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.clinicavital.model.Usuario;
-import br.com.clinicavital.repositry.UsuarioRepository;
+import br.com.clinicavital.service.UsuarioService;
 
 @Controller
 @RequestMapping("usuario")
 public class UsuarioController {
 
 	@Autowired
-	private UsuarioRepository repository;
+	private UsuarioService useService;
 	
 	@GetMapping("/liberar/acesso")
 	public String abrirPagLiberarAcesso() {
@@ -22,7 +22,8 @@ public class UsuarioController {
 	
 	@PostMapping("/liberar/acesso/salvar")
 	public String liberarAcesso(Usuario usuario){
-		repository.save(usuario);
-		return "redirect:/liberar/acesso";
+		usuario.setAtivo(true);
+		useService.salvarUsuario(usuario);
+		return "admin/liberar-acesso";
 	}
 }

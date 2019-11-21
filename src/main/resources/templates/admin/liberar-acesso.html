@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
 		<meta charset="UTF-8">
@@ -43,23 +44,27 @@
 			<div id="liberar-acesso">
 				<div class="row">
 					<div class="col-12">
-						<form class="form-group" action="">
+					
+						<form class="form-group" th:action="@{/usuario/liberar/acesso/salvar}" th:object="${usuario}" 
+						method="POST">
 							<label for="inputemail">E-mail</label>
-								<input class="form-control" type="text" placeholder="email@servidor.com" 
-								name="inputemail">
+							
+								<input th:field="*{email}" class="form-control" type="email" placeholder="email@servidor.com" 
+								name="inputemail" required>
 								
 							<label for="inputsenha">Senha</label>
-								<input class="form-control" type="password"  placeholder="***********" 
-								name="inputsenha">
+								<input th:field="*{senha}" class="form-control" type="password" placeholder="***********" 
+								name="inputsenha" required>
 								
 							<label for="perfis">Perfil</label>
 							
-							<select multiple="multiple" class="form-control mb-3">
-								<option>Administrador</option>
-								<option>Médico</option>
-								<option>Fisioterapeuta</option>
-								<option>Nutricionista</option>
-								<option>Paciente</option>
+							<select id="perfis" th:field="*{perfis}" 
+							class="form-control mb-3" required="required">
+								<option value="1">Administrador</option>
+								<option value="2">Médico</option>
+								<option value="3">Fisioterapeuta</option>
+								<option value="4">Nutricionista</option>
+								<option value="5">Paciente</option>
 							</select>
 							
 							<div class="row">
