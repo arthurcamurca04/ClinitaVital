@@ -54,4 +54,12 @@ public class UsuarioService implements UserDetailsService{
 				AuthorityUtils.createAuthorityList(getAuthorities(u.getPerfis()))
 				);
 	}
+
+	public void salvarUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		userRepository.save(usuario);
+		
+	}
+	
+	
 }
