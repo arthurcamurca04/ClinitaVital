@@ -25,7 +25,7 @@ public class Paciente extends AbstractEntity{
 	@OneToMany(mappedBy = "paciente")
 	private List<Agendamento> agendamentos;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	

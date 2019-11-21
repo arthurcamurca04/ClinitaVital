@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns="http://www.w3.org/1999/xhtml">
+	xmlns="http://www.w3.org/1999/xhtml"
+	>
 
 	<head>
 		<meta charset="UTF-8">
@@ -31,13 +32,12 @@
 					<span class="text-light">Administrador</span>
 				         			
 					<form class="form-inline my-2 my-lg-0" style="margin-left: 55%;">
-	      				<input class="form-control mr-sm-2" type="text" aria-label="Pesquisar" readonly="readonly">
-	      				<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
-	   				 </form>
+			      				<input class="form-control mr-sm-2" type="text" aria-label="Pesquisar" readonly="readonly">
+			      				<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
+			   				 </form>
 				</nav>
 		</header>
-		
-		
+			
 		<h1 class="display mt-5 mb-5" style="text-align: center">Liberar acesso</h1>
 		
 		<div class="container">
@@ -45,15 +45,15 @@
 				<div class="row">
 					<div class="col-12">
 					
-						<form class="form-group" th:object="${usuario}" th:action="@{/usuario/liberar/acesso/salvar}"  
+						<form class="form-group" th:object="${usuario}" th:action="@{/usuario/admin/liberar/acesso}"  
 						method="POST">
 							<label for="inputemail">E-mail</label>
 							
-								<input th:field="*{email}" class="form-control" type="email" placeholder="email@servidor.com" 
-								name="inputemail" required>
+							<input type="email" id="email" th:field="*{email}" class="form-control"  placeholder="email@servidor.com" 
+							name="inputemail" required>
 								
 							<label for="inputsenha">Senha</label>
-								<input th:field="*{senha}" class="form-control" type="password" placeholder="***********" 
+								<input th:field="*{senha}" id="senha" class="form-control" type="password" placeholder="***********" 
 								name="inputsenha" required>
 								
 							<label for="perfis">Perfil</label>
@@ -81,9 +81,19 @@
 				</div>
 			</div>
 		</div>	
-			
+		
 		<script th:src="@{/webjars/jquery/jquery.min.js/}"></script>
 		<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+		
+	<script	th:src="~{}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript">
+		$('#perfis').ready(function(){
+			var perfis = [[${usuario.perfis}]]
+			$.each(perfis, function(k, v){
+				$('#perfis option[value="'+ v.id +'"]').attr('selected', 'selected');
+			});
+		});
+	</script>
 	</body>
 
 </html>
