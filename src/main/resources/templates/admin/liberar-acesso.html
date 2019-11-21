@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org"
-xmlns="http://www.w3.org/1999/xhtml">
+	xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
 		<meta charset="UTF-8">
@@ -45,7 +45,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 				<div class="row">
 					<div class="col-12">
 					
-						<form class="form-group" th:action="@{/usuario/liberar/acesso/salvar}" th:object="${usuario}" 
+						<form class="form-group" th:object="${usuario}" th:action="@{/usuario/liberar/acesso/salvar}"  
 						method="POST">
 							<label for="inputemail">E-mail</label>
 							

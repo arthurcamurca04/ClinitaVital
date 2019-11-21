@@ -8,14 +8,12 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "pacientes")
-public class Paciente{
+public class Paciente extends AbstractEntity{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
+	
 	@Column(name = "nome", unique = true, nullable = false)
 	private String nome;
 
@@ -65,14 +63,6 @@ public class Paciente{
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Endereco getEndereco() {

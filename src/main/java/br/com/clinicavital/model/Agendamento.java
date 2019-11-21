@@ -6,13 +6,10 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "agendamentos") 
-public class Agendamento {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class Agendamento extends AbstractEntity{
 	
 	@ManyToOne
 	@JoinColumn(name="id_especialidade")
@@ -33,14 +30,6 @@ public class Agendamento {
 	@Column(name="data_consulta")
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate dataConsulta;
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 	
 	public Especialidade getEspecialidade() {
 		return especialidade;

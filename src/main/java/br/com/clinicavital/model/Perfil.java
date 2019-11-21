@@ -2,13 +2,11 @@ package br.com.clinicavital.model;
 
 import javax.persistence.*;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "perfis")
-public class Perfil {
+public class Perfil extends AbstractEntity{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	
 	@Column(name = "descricao", nullable = false, unique = true)
 	private String desc;
@@ -27,15 +25,6 @@ public class Perfil {
 
 	public void setDesc(String desc) {
 		this.desc = desc;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
+	}	
 	
 }
