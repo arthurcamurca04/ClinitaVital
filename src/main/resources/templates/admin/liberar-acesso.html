@@ -2,6 +2,7 @@
 
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{layout}"
 	>
 
 	<head>
@@ -20,67 +21,62 @@
 			#botao{
 				border-radius: 25px !important;
 			}
+			
+			#titulo{
+				margin-top: 150px !important;
+			}
 		</style>
 	</head>
 	
 	<body>
 	
-		<header>
+	<section class="layout-content" layout:fragment="corpo">
+		<main role="main">	
+			<h1 id="titulo" class="display mt-5 mb-5" style="text-align: center">Liberar acesso</h1>
 			
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-					<a class="navbar-brand" href="#">Clínica Médica Vital</a>
-					<span class="text-light">Administrador</span>
-				         			
-					<form class="form-inline my-2 my-lg-0" style="margin-left: 55%;">
-			      				<input class="form-control mr-sm-2" type="text" aria-label="Pesquisar" readonly="readonly">
-			      				<button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
-			   				 </form>
-				</nav>
-		</header>
-			
-		<h1 class="display mt-5 mb-5" style="text-align: center">Liberar acesso</h1>
-		
-		<div class="container">
-			<div id="liberar-acesso">
-				<div class="row">
-					<div class="col-12">
-					
-						<form class="form-group" th:object="${usuario}" th:action="@{/usuario/admin/liberar/acesso}"  
-						method="POST">
-							<label for="inputemail">E-mail</label>
-							
-							<input type="email" id="email" th:field="*{email}" class="form-control"  placeholder="email@servidor.com" 
-							name="inputemail" required>
+			<div class="container">
+				<div id="liberar-acesso">
+					<div class="row">
+						<div class="col-12">
+						
+							<form class="form-group" th:object="${usuario}" th:action="@{/usuario/admin/liberar/acesso}"  
+							method="POST">
+								<label for="inputemail">E-mail</label>
 								
-							<label for="inputsenha">Senha</label>
-								<input th:field="*{senha}" id="senha" class="form-control" type="password" placeholder="***********" 
-								name="inputsenha" required>
+								<input type="email" id="email" th:field="*{email}" class="form-control"  placeholder="email@servidor.com" 
+								name="inputemail" required>
+									
+								<label for="inputsenha">Senha</label>
+									<input th:field="*{senha}" id="senha" class="form-control" type="password" placeholder="***********" 
+									name="inputsenha" required>
+									
+								<label for="perfis">Perfil</label>
 								
-							<label for="perfis">Perfil</label>
-							
-							<select id="perfis" th:field="*{perfis}" 
-							class="form-control mb-3" required="required">
-								<option value="1">Administrador</option>
-								<option value="2">Médico</option>
-								<option value="3">Fisioterapeuta</option>
-								<option value="4">Nutricionista</option>
-								<option value="5">Paciente</option>
-							</select>
-							
-							<div class="row">
-								<div class="col-6">
-									<button id="botao" type="button" class="btn btn-primary btn-lg btn-block">Voltar</button>
+								<select id="perfis" th:field="*{perfis}" 
+								class="custom-select form-control mb-3" size="6" multiple required="required">
+									<option value="1">Administrador</option>
+									<option value="2">Médico</option>
+									<option value="3">Fisioterapeuta</option>
+									<option value="4">Nutricionista</option>
+									<option value="5">Paciente</option>
+								</select>
+									<input type="hidden" value="0" name="perfis">
+								<div class="row">
+									<div class="col-6">
+										<button id="botao" type="button" class="btn btn-primary btn-lg btn-block">Voltar</button>
+									</div>
+									
+									<div class="col-6">
+										<button id="botao" type="submit" class="btn btn-success btn-lg btn-block">Salvar</button>
+									</div>								
 								</div>
-								
-								<div class="col-6">
-									<button id="botao" type="submit" class="btn btn-success btn-lg btn-block">Salvar</button>
-								</div>								
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>	
+		</main>
+	</section>		
 		
 		<script th:src="@{/webjars/jquery/jquery.min.js/}"></script>
 		<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
