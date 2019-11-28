@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastro</title>
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<style type="text/css">
+			#secao{
+				margin: 0 10% 0 10% !important;
+				justify-content: center !important;
+			}
+		
+			#botao{
+				border-radius: 25px !important;
+			}
+			
+			#inputs{
+				margin-left: 8%;	
+			}			
+		</style>
+	</head>
+	
+	<body>
+	
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand" th:href="@{/}">Clínica Médica Vital</a>
+			</nav>
+		</header>
+	
+	<div class="container mt-4">
+	<section id="secao" class="layout-content bg-light">
+		<main role="main">
+		
+		<h4 class="display-4 text-center mb-4">Inserir dados cadastrais</h4>
+		
+			<div id="inputs" class="container">
+				<div class="row">
+					<div class="col-10">
+					
+				<form class="form form-group" th:action="@{/nutricionista/cadastrar}" th:object="${nutricionista}" method="POST">
+			
+					<input class="form-control" type="text" th:field="*{nome}" placeholder="Nome completo" 
+					name="inputnome" required autofocus><br>
+					
+					<div class="row">
+						<div class="col-8">
+							<input class="form-control" type="email" th:field="*{usuario.email}" placeholder="E-mail" 
+							name="inputnome" required="required"><br>
+						</div>
+						
+						<div class="col-9">
+							<input class="form-control" type="CRN" th:field="*{nutricionista.crn}" placeholder="crn" 
+							name="inputnome" required="required"><br>
+						</div>
+					</div>
+					
+					<input class="form-control" type="password" th:field="*{usuario.senha}" placeholder="Senha" 
+					name="inputnome" required><br>	
+					
+					<input type="hidden" th:field="*{usuario.ativo}" value="1">
+					
+					<div class="row">
+						<div class="col-6">
+							<a id="botao" href="javascript:history.back()" 
+							class="btn btn-primary btn-lg btn-block">Voltar</a>
+						</div>
+						
+						<div class="col-6">
+							<button id="botao" type="submit" 
+							class="btn btn-success btn-lg btn-block">Cadastrar</button>
+						</div>
+					</div>
+			</form>
+				</div>
+			</div>
+		</div>
+		</main>
+	</section>
+	</div>
+	<script th:src="@{/webjars/jquery/jquery.min.js/}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	</body>
+</html>

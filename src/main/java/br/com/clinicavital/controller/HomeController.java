@@ -55,9 +55,9 @@ public class HomeController {
 	public String paginaDeErro() {
 		return "pagina-de-erro";
 	}
-	@GetMapping("/cadastrar-nutricionista")
-	public String cadastrarNutricionista(Nutricionista nutricionista) {
-		return "nutricionista/cadastrar-nutricionista";
+	@GetMapping("/nutricionista")
+	public String cadastrarNutricionista() {
+		return "nutricionista/cadastrar";
 	}
 	@GetMapping("/Teste")
 	public String teste() {

@@ -15,7 +15,7 @@
 		name="inputnome"><br>
 		
 		<label for="inputemail">E-mail</label>
-		<input type="text" th:field="*{usuario.email}" placeholder="Ex.: paciente@email.com" 
+		<input type="text" th:field="*{usuario.email}" placeholder="Ex.: nutricionista@email.com" 
 		name="inputnome"><br>
 		
 		<label for="inputsenha">Senha</label>
@@ -23,7 +23,8 @@
 		name="inputnome"><br>
 		
 		<label for="inputcrefito">Crn</label>
-		<input type="text" th:field="*{crn}" placeholder="Crn" name="inputCrn"><br>
+		<input type="text" th:field="*{nutricionista.crn}" placeholder="Crn" 
+		name="inputCrn"><br>
 		
 		<button type="button">Cancelar</button>
 		<button type="submit">Confimar</button>
