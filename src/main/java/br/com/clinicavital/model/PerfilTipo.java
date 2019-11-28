@@ -2,7 +2,7 @@ package br.com.clinicavital.model;
 
 public enum PerfilTipo {
 	ADMIN(1, "ADMIN"), MEDICO(2, "MEDICO"), FISIOTERAPEUTA(3, "FISIOTERAPEUTA"), 
-	NUTRICIONISTA(3, "NUTRIOCIONISTA"), PACIENTE(3, "PACIENTE");
+	NUTRICIONISTA(4, "NUTRIOCIONISTA"), PACIENTE(5, "PACIENTE");
 	
 	private long cod;
 	private String desc;

@@ -3,7 +3,6 @@ package br.com.clinicavital.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import br.com.clinicavital.model.Nutricionista;
 import br.com.clinicavital.model.Paciente;
 
 @Controller
