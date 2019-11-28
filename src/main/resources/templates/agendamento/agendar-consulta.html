@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Agendar consulta</title>
+	</head>
+	
+	<body>
+	
+	<label for="selecaoprofissional">Profissional</label>
+	<br>
+		<select id="profissionais" th:field="" 
+		class="form-group custom-select" size="6" >
+		<option value="2">Médico</option>
+		<option value="3">Fisioterapeuta</option>
+		<option value="4">Nutricionista</option>
+		</select>
+	<br>
+	<label for="selecaoespecialidade">Especialidade</label>
+		<br>
+		<select id="especialidade" th:field="" 
+		class="form-group custom-select" size="6" >
+		<option value="1">Geral</option>
+		</select>
+	<br>
+	<label for="selecaoatendente">Atendente</label>
+		<br>
+		<select id="atendente" th:field="" 
+		class="form-group custom-select" size="6" >
+		<option value="1">Arthur</option>
+		</select>
+	<br>
+	<label for="selecaodata">Selecione a data da consulta</label>
+		<br>
+		<div class="col-4">
+			<input class="form-control" type="date" th:field="" 
+			name="inputdataconsulta" required><br>
+		</div>
+	<br>
+	<label for="selecaohorario">Horários disponíveis</label>
+		<br>
+		<select id="horario" th:field="" 
+		class="form-group custom-select" size="6" >
+		<option value="1">8:00</option>
+		<option value="2">8:30</option>
+		<option value="3">9:00</option>
+		<option value="4">9:30</option>
+		<option value="5">10:00</option>
+		<option value="6">10:30</option>
+		<option value="7">11:00</option>
+		<option value="8">11:30</option>
+		</select>
+		
+	<br>
+	<div class="col-6">
+		<button id="botao1" type="submit" 
+		class="btn btn-success btn-lg btn-block">Agendar</button>
+	</div>
+	
+	<div class="col-6">
+		<button id="botao2" href="javascript:history.back()" 
+		class="btn btn-primary btn-lg btn-block">Voltar</a>
+	</div>
+	
+	</body>
+
+</html>

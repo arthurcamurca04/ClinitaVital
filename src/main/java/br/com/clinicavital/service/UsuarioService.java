@@ -60,8 +60,11 @@ public class UsuarioService implements UserDetailsService{
 		String criptografia =new BCryptPasswordEncoder().
 				encode(usuario.getSenha());
 		usuario.setSenha(criptografia);
-		userRepository.save(usuario);
-		
+		try {
+			userRepository.save(usuario);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}	
 	}
 	
 	
