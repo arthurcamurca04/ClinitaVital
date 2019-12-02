@@ -1,68 +1,84 @@
 <!DOCTYPE html>
 
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml"
+	layout:decorate="~{layout}">
 
 	<head>
 		<meta charset="UTF-8">
 		<title>Agendar consulta</title>
+		<link rel="stylesheet"
+		th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		
 	</head>
 	
 	<body>
 	
-	<label for="selecaoprofissional">Profissional</label>
-	<br>
-		<select id="profissionais" th:field="" 
-		class="form-group custom-select" size="6" >
-		<option value="2">Médico</option>
-		<option value="3">Fisioterapeuta</option>
-		<option value="4">Nutricionista</option>
-		</select>
-	<br>
-	<label for="selecaoespecialidade">Especialidade</label>
-		<br>
-		<select id="especialidade" th:field="" 
-		class="form-group custom-select" size="6" >
-		<option value="1">Geral</option>
-		</select>
-	<br>
-	<label for="selecaoatendente">Atendente</label>
-		<br>
-		<select id="atendente" th:field="" 
-		class="form-group custom-select" size="6" >
-		<option value="1">Arthur</option>
-		</select>
-	<br>
-	<label for="selecaodata">Selecione a data da consulta</label>
-		<br>
-		<div class="col-4">
-			<input class="form-control" type="date" th:field="" 
-			name="inputdataconsulta" required><br>
-		</div>
-	<br>
-	<label for="selecaohorario">Horários disponíveis</label>
-		<br>
-		<select id="horario" th:field="" 
-		class="form-group custom-select" size="6" >
-		<option value="1">8:00</option>
-		<option value="2">8:30</option>
-		<option value="3">9:00</option>
-		<option value="4">9:30</option>
-		<option value="5">10:00</option>
-		<option value="6">10:30</option>
-		<option value="7">11:00</option>
-		<option value="8">11:30</option>
-		</select>
-		
-	<br>
-	<div class="col-6">
-		<button id="botao1" type="submit" 
-		class="btn btn-success btn-lg btn-block">Agendar</button>
-	</div>
+	<!--  inicio -->
 	
-	<div class="col-6">
-		<button id="botao2" href="javascript:history.back()" 
-		class="btn btn-primary btn-lg btn-block">Voltar</a>
-	</div>
+	<section class="layout-content" layout:fragment="corpo">
+		<main role="main">	
+			<h1 id="titulo" class="display mt-5 mb-5" style="text-align: center">Agendar  consulta</h1>
+			
+			<div class="container">
+				<div id="agendar-consulta">
+					<div class="row">
+						<div class="col-12">
+						
+							<form class="form-group" th:object="${agendamento}" th:action="@{///}"  
+							method="POST">
+								<label for="selecaoprofissional">Profissional</label>
+								<select id="profissional" th:field="" class="custom-select form-control mb-3" size="6" >
+								<option value="2">Médico</option>
+								<option value="3">Fisioterapeuta</option>
+								<option value="4">Nutricionista</option>
+								</select>
+							
+								<label for="selecaoespecialidade">Especialidade</label>
+								<select id="especialidade" th:field="*{}" class="custom-select form-control mb-3" size="6" >
+								<option value="1">Geral</option>
+								</select>
+	
+								<label for="selecaoatendente">Atendente</label>
+								<select id="atendente" th:field="*{}" class="custom-select form-control mb-3" size="6" >
+								<option value="1">Arthur</option>
+								</select>
+	
+								<label for="selecaodata">Selecione a data da consulta</label>
+								<div class="col-4">
+								<input class="form-control" type="date" th:field="*{}" name="inputdataconsulta" required />
+								</div>							
+									
+								<label for="selecaohorario">Horários disponíveis</label>
+								<select id="horario" th:field="*{}" class="form-group custom-select" size="6" >
+								<option value="1">8:00</option>
+								<option value="2">8:30</option>
+								<option value="3">9:00</option>
+								<option value="4">9:30</option>
+								<option value="5">10:00</option>
+								<option value="6">10:30</option>
+								<option value="7">11:00</option>
+								<option value="8">11:30</option>
+								</select>
+								<!--  <input type="hidden" value="0" name="perfis">-->	
+								<div class="row">
+									<div class="col-6">
+										<a id="botao" href="javascript:history.back()" class="btn btn-primary btn-lg btn-block">Voltar</a>
+									</div>
+									
+									<div class="col-6">
+										<button id="botao" type="submit" class="btn btn-success btn-lg btn-block">Salvar</button>
+									</div>								
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</section>	
+	
+	<!-- fim -->
 	
 	</body>
 

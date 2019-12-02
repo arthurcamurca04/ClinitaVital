@@ -34,7 +34,7 @@ public class PacienteController {
 	}
 	
 	//método para agendar consultas
-	@GetMapping("agendamentos/agendar")
+	@GetMapping("/agendamentos/agendar")
 	public String agendarConsulta() {
 		return "paciente/agendar-consulta";
 	}
