@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.w3.org/1999/xhtml"
 	layout:decorate="~{layout}">
 
 	<head>
@@ -9,7 +9,21 @@
 		<title>Agendar consulta</title>
 		<link rel="stylesheet"
 		th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		
+		<style type="text/css">
+			#agendar-consulta{
+				margin: auto !important;
+				height: 25% !important;
+				width: 50% !important;
+			}
+			
+			#botao{
+				border-radius: 25px !important;
+			}
+			
+			#titulo{
+				margin-top: 150px !important;
+			}
+		</style>
 	</head>
 	
 	<body>
@@ -25,39 +39,34 @@
 					<div class="row">
 						<div class="col-12">
 						
-							<form class="form-group" action="" method="POST">
-								<label for="selecaoprofissional">Profissional</label>
-								<select id="profissional"  class="custom-select form-control mb-3" size="6" >
+							<form class="form-group" action="" method="POST" th:object="${agendamento}" th:action="@{/agendamento/agendar/salvar}">
+						<!-- 	<label for="selecaoprofissional">Profissional</label>
+							 	<select id="profissional"  class="custom-select form-control mb-3" size="6" >
 									<option value="2">Médico</option>
 									<option value="3">Fisioterapeuta</option>
 									<option value="4">Nutricionista</option>
-								</select>
+								</select> -->
 							
-								<label for="selecaoespecialidade">Especialidade</label>
-								<select id="especialidade" class="custom-select form-control mb-3" size="6" >
-								<option value="1">Geral</option>
+							<label for="selecaoespecialidade" >Especialidade</label>
+								<select id="especialidade" th:field="*{especialidade.titulo}" class="custom-select form-control mb-3" size="6" >
+								<option th:value="*{especialidade.id}" 
+									  			th:text="*{especialidade.titulo}"></option>
 								</select>
 	
-								<label for="selecaoatendente">Atendente</label>
-								<select id="atendente" class="custom-select form-control mb-3" size="6" >
-								<option value="1">Arthur</option>
+								<label for="selecaomedico" >Médico</label>
+								<select id="medico" th:field="*{medico.nome}" class="custom-select form-control mb-3" size="6" >
+								<option th:value="medico.id" th:text="*{medico.nome}"></option>
 								</select>
 	
 								<label for="selecaodata">Selecione a data da consulta</label>
 								<div class="col-4">
-								<input class="form-control" type="date" name="inputdataconsulta" required />
+								<input id="data" th:field="*{dataConsulta}" class="form-control" type="date" name="inputdataconsulta" required />
 								</div>							
 									
-								<label for="selecaohorario">Horários disponíveis</label>
-								<select id="horario" class="form-group custom-select" size="6" >
-									<option value="1">8:00</option>
-									<option value="2">8:30</option>
-									<option value="3">9:00</option>
-									<option value="4">9:30</option>
-									<option value="5">10:00</option>
-									<option value="6">10:30</option>
-									<option value="7">11:00</option>
-									<option value="8">11:30</option>
+								<label for="selecaohorario" >Horários disponíveis</label>
+								<select id="horario" th:field="*{horario.id}" class="form-group custom-select" size="6" >
+									<option th:value="*{horario.id}" 
+									  			th:text="*{horario.horaMinuto}"></option>
 								</select>
 								<!--  <input type="hidden" value="0" name="perfis">-->	
 								<div class="row">
