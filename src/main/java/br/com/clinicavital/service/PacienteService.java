@@ -19,4 +19,10 @@ public class PacienteService {
 		repository.save(paciente);
 	}
 
+	public Paciente buscarPorUsuarioEmail(String email) {
+		// TODO Auto-generated method stub
+		return repository.findByEmail(email);
+		
+	}
+
 }
