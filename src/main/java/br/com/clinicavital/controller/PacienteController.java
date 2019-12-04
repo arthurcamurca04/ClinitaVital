@@ -1,20 +1,12 @@
 package br.com.clinicavital.controller;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-import br.com.clinicavital.model.Agendamento;
 import br.com.clinicavital.model.Paciente;
-import br.com.clinicavital.model.Perfil;
 import br.com.clinicavital.model.PerfilTipo;
 import br.com.clinicavital.model.Usuario;
 import br.com.clinicavital.service.PacienteService;

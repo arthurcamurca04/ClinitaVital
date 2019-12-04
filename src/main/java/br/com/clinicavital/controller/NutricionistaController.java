@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.clinicavital.model.Nutricionista;
-import br.com.clinicavital.repositry.NutricionistaRepository;
+import br.com.clinicavital.repository.NutricionistaRepository;
 
 @Controller
 @RequestMapping("nutricionista")

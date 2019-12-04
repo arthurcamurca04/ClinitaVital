@@ -39,44 +39,67 @@
 					<div class="row">
 						<div class="col-12">
 						
-							<form class="form-group" action="" method="POST" th:object="${agendamento}" th:action="@{/agendamento/agendar/salvar}">
-						<!-- 	<label for="selecaoprofissional">Profissional</label>
-							 	<select id="profissional"  class="custom-select form-control mb-3" size="6" >
-									<option value="2">Médico</option>
-									<option value="3">Fisioterapeuta</option>
-									<option value="4">Nutricionista</option>
-								</select> -->
-							
-							<label for="selecaoespecialidade" >Especialidade</label>
-								<select id="especialidade" th:field="*{especialidade.titulo}" class="custom-select form-control mb-3" size="6" >
-								<option th:value="*{especialidade.id}" 
-									  			th:text="*{especialidade.titulo}"></option>
-								</select>
+							<form class="form-group" th:action="@{/agendamento/agendar/salvar}" th:object="${agendamento}" method="POST">
+								<div class="form-row">
+								<div class="form-group col-md-12">
+									<small class="form-text text-muted">Selecione 
+										a especialidade médica referente a sua consulta.</small>
+										
+									<input type="text" class="form-control"
+										id="especialidade" placeholder="Ex.: Pediatria"
+										th:field="*{especialidade.titulo}" required />
+								</div>
+							</div>
 	
-								<label for="selecaomedico" >Médico</label>
-								<select id="medico" th:field="*{medico.nome}" class="custom-select form-control mb-3" size="6" >
-								<option th:value="medico.id" th:text="*{medico.nome}"></option>
-								</select>
-	
-								<label for="selecaodata">Selecione a data da consulta</label>
-								<div class="col-4">
-								<input id="data" th:field="*{dataConsulta}" class="form-control" type="date" name="inputdataconsulta" required />
-								</div>							
-									
-								<label for="selecaohorario" >Horários disponíveis</label>
-								<select id="horario" th:field="*{horario.id}" class="form-group custom-select" size="6" >
-									<option th:value="*{horario.id}" 
-									  			th:text="*{horario.horaMinuto}"></option>
-								</select>
-								<!--  <input type="hidden" value="0" name="perfis">-->	
-								<div class="row">
-									<div class="col-6">
-										<a id="botao" href="javascript:history.back()" class="btn btn-primary btn-lg btn-block">Voltar</a>
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<div class="card">
+									  <div class="card-header">
+									    Indique o profissional desejado
+									  </div>
+									  <div class="card-body" id="medicos">										  									    
+											<!-- jQuery -->
+									  </div>									  							  
 									</div>
-									
+								</div>
+							</div>
+							
+							<div class="form-row">								
+								<div class="form-group col-md-12">
+									<small class="form-text text-muted">Selecione 
+										a data da consulta</small>
+									<input class="form-control" type="date" id="data" 
+										th:field="*{dataConsulta}" required/>
+									<div class="invalid-feedback">
+								      Data é obrigatória.
+								    </div>	
+								</div>
+							</div>
+							
+							<div class="form-row">
+								<div class="form-group col-md-12">
+									<small id="hr-small" class="form-text text-muted">Horários disponíveis
+										para a consulta</small>
+									<select id="horarios" class="custom-select" size="5" 
+										th:field="*{horario.id}" required>
+									  	<option th:value="*{horario.id}" 
+									  			th:text="*{horario.horaMinuto}"></option>
+									</select>
+									<div class="invalid-feedback">Horário é obrigatório</div>
+								</div>
+							</div>
+							
+							<input type="hidden" th:field="*{id}"/>							
+							<div class="row">
 									<div class="col-6">
-										<button id="botao" type="submit" class="btn btn-success btn-lg btn-block">Salvar</button>
-									</div>								
+										<a id="botao" href="javascript:history.back()"
+											class="btn btn-primary btn-lg btn-block">Voltar</a>
+									</div>
+
+									<div class="col-6">
+										<button id="botao" type="submit"
+											class="btn btn-success btn-lg btn-block">Agendar</button>
+									</div>
 								</div>
 							</form>
 						</div>
@@ -86,8 +109,25 @@
 		</main>
 	</section>	
 	
-	<!-- fim -->
-	
+	<script	th:src="@{/js/agendamento.js(v=${version})}" th:fragment="js"></script>
+	<script th:inline="javascript" th:fragment="inlinescript">
+	// buscar o médico pela especialidade
+	/*[# th:if="${agendamento.medico != null}"]*/
+		$( document ).ready(function() {
+			var id = [[${agendamento.medico.id}]];
+			var titulo = [(${#strings.concat("'",agendamento.especialidade.titulo,"'")})];
+			$.get( "/medicos/especialidade/titulo/" + titulo, function( result ) {
+				$.each(result, function (k, v) {
+					$("#medicos").append(
+						 '<div class="custom-control custom-radio">'
+						+  '<input class="custom-control-input" type="radio" id="customRadio'+ k +'" name="medico.id" value="'+ v.id +'" required '+ (v.id == id ? "checked" : "")+' />'
+						+  '<label class="custom-control-label" for="customRadio'+ k +'">'+ v.nome +'</label>'
+						+'</div>'
+					);
+				});
+			});
+		});
+	/*[/]*/
+	</script>	
 	</body>
-
 </html>

@@ -20,10 +20,14 @@ public class SecurityConfing extends WebSecurityConfigurerAdapter{
 		
 		http.authorizeRequests()
 			//acessos públicos
-		.antMatchers("/webjars/**").permitAll()
-		.antMatchers("/").permitAll()
+		.antMatchers("/webjars/**", "/image/**").permitAll()
+		.antMatchers("/**").permitAll()
 		.antMatchers("/nutricionista/**").permitAll()
+		.antMatchers("/medicos/**").permitAll()
+		.antMatchers("/agendamento/**").permitAll()
 		.antMatchers("/paciente/**").permitAll()
+		.antMatchers("/js/**").permitAll()
+		.antMatchers("/css/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 			.formLogin()

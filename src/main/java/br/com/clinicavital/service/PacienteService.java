@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.clinicavital.model.Paciente;
-import br.com.clinicavital.repositry.PacienteReporitory;
+import br.com.clinicavital.repository.PacienteReporitory;
 
 @Service
 public class PacienteService {

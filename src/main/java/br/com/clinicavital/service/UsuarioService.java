@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.clinicavital.model.Perfil;
 import br.com.clinicavital.model.Usuario;
-import br.com.clinicavital.repositry.UsuarioRepository;
+import br.com.clinicavital.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService implements UserDetailsService{

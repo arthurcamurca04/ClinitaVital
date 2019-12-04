@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.clinicavital.model.Agendamento;
-import br.com.clinicavital.repositry.AgendamentoRepository;
+import br.com.clinicavital.repository.AgendamentoRepository;
 
 @Service
 public class AgendamentoService {
