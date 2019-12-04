@@ -20,6 +20,30 @@ public class Agendamento extends AbstractEntity{
 	private Medico medico;
 	
 	@ManyToOne
+	@JoinColumn(name="id_fisioterapeuta")
+	private Fisioterapeuta fisioterapeuta;
+	
+	@ManyToOne
+	@JoinColumn(name="id_nutricionista")
+	private Nutricionista nutricionista;
+	
+	public Fisioterapeuta getFisioterapeuta() {
+		return fisioterapeuta;
+	}
+
+	public void setFisioterapeuta(Fisioterapeuta fisioterapeuta) {
+		this.fisioterapeuta = fisioterapeuta;
+	}
+
+	public Nutricionista getNutricionista() {
+		return nutricionista;
+	}
+
+	public void setNutricionista(Nutricionista nutricionista) {
+		this.nutricionista = nutricionista;
+	}
+
+	@ManyToOne
 	@JoinColumn(name="id_paciente")
 	private Paciente paciente;
 	
